@@ -3,7 +3,7 @@
 namespace Hymns\ToyyibPay;
 
 use GuzzleHttp\Client;
-use ToyyibPayEnterprise;
+use Hymns\ToyyibPay\ToyyibPayEnterprise;
 
 class ToyyibPay
 {
@@ -59,7 +59,7 @@ class ToyyibPay
      * @link https://toyyibpay.com/apireference/#cc
      * @param string $name collection name
      * @param string $description description for collection name
-     * @return string JSON 
+     * @return string JSON
      */
     public function createCategory($name, $description)
     {
@@ -82,7 +82,7 @@ class ToyyibPay
      *
      * @link https://toyyibpay.com/apireference/#gc
      * @param string $code category code
-     * @return string JSON 
+     * @return string JSON
      */
     public function getCategory($code)
     {
@@ -105,7 +105,7 @@ class ToyyibPay
      * @link https://toyyibpay.com/apireference/#cb
      * @param string $code category code
      * @param object $bill_object bill parameters object
-     * @return string JSON 
+     * @return string JSON
      */
     public function createBill($code, $bill_object)
     {
