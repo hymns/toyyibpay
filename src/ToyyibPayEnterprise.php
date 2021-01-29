@@ -1,5 +1,7 @@
 <?php
 
+namespace Hymns\ToyyibPay;
+
 trait ToyyibPayEnterprise
 {
     /**
