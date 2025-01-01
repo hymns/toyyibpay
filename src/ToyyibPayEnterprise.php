@@ -8,9 +8,9 @@ trait ToyyibPayEnterprise
      * Create toyyibPay user account
      * @param array $userData
      * @link https://toyyibpay.com/apireference/#gu
-     * @return string JSON
+     * @return object
      */
-    public function createUser($userData)
+    public function createUser($userData): object
     {
         $data = [
             'form_params' => $userData
@@ -27,9 +27,9 @@ trait ToyyibPayEnterprise
      *
      * @param array $credential content of username and enterpriseUserSecretKey
      * @link https://toyyibpay.com/apireference/#gus
-     * @return string JSON
+     * @return object
      */
-    public function getUserStatus($credential)
+    public function getUserStatus($credential): object
     {
         $data = [
             'form_params' => $credential
@@ -45,9 +45,9 @@ trait ToyyibPayEnterprise
      * Get bank accepted to be use with toyyibPay
      *
      * @link https://toyyibpay.com/apireference/#gb
-     * @return string JSON
+     * @return object
      */
-    public function getBanks()
+    public function getBanks(): object
     {
         $url = $this->toyyibpay_uri . '/index.php/api/getBank';
         $res = $this->get($url, []);
@@ -59,9 +59,9 @@ trait ToyyibPayEnterprise
      * Get FPX code to be use with toyyibPay
      *
      * @link https://toyyibpay.com/apireference/#gb
-     * @return string JSON
+     * @return object
      */
-    public function getBanksFPX()
+    public function getBanksFPX(): object
     {
         $url = $this->toyyibpay_uri . '/index.php/api/getBankFPX';
         $res = $this->get($url, []);
@@ -73,9 +73,9 @@ trait ToyyibPayEnterprise
      * Get package to be use with toyyibPay
      *
      * @link https://toyyibpay.com/apireference/#gb
-     * @return string JSON
+     * @return object
      */
-    public function getPackages()
+    public function getPackages(): object
     {
         $url = $this->toyyibpay_uri . '/index.php/api/getPackage';
         $res = $this->get($url, []);
@@ -88,9 +88,9 @@ trait ToyyibPayEnterprise
      *
      * @param array $credential content of username and userSecretKey
      * @link https://toyyibpay.com/apireference/#gus
-     * @return string JSON
+     * @return object
      */
-    public function getSettlementSummary($credential)
+    public function getSettlementSummary($credential): object
     {
         $data = [
             'form_params' => $credential

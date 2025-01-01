@@ -17,6 +17,11 @@ class ToyyibPay
     private $user_secret_key;
     private $redirect_uri;
 
+    /**
+     * @param mixed $CLIENT_SECRET
+     * @param mixed $REDIRECT_URI
+     * @param mixed $PRODUCTION_MODE
+     */
     public function __construct($CLIENT_SECRET, $REDIRECT_URI, $PRODUCTION_MODE = false)
     {
         $this->client = new Client();
@@ -30,8 +35,9 @@ class ToyyibPay
      *
      * @param string $url
      * @param array $config
+     * @return object
      */
-    public function get($url, $config)
+    public function get($url, $config): object
     {
         $res = $this->client->get($url, $config);
         $result = json_decode($res->getBody()->getContents());
@@ -44,8 +50,9 @@ class ToyyibPay
      *
      * @param string $url
      * @param array $config
+     * @return object
      */
-    public function post($url, $config)
+    public function post($url, $config): object
     {
         $res = $this->client->post($url, $config);
         $result = json_decode($res->getBody()->getContents());
@@ -59,9 +66,9 @@ class ToyyibPay
      * @link https://toyyibpay.com/apireference/#cc
      * @param string $name collection name
      * @param string $description description for collection name
-     * @return string JSON
+     * @return object
      */
-    public function createCategory($name, $description)
+    public function createCategory($name, $description): object
     {
         $data = [
             'form_params' => [
@@ -82,9 +89,9 @@ class ToyyibPay
      *
      * @link https://toyyibpay.com/apireference/#gc
      * @param string $code category code
-     * @return string JSON
+     * @return object
      */
-    public function getCategory($code)
+    public function getCategory($code): object
     {
         $data = [
             'form_params' => [
@@ -105,9 +112,9 @@ class ToyyibPay
      * @link https://toyyibpay.com/apireference/#cb
      * @param string $code category code
      * @param object $bill_object bill parameters object
-     * @return string JSON
+     * @return object
      */
-    public function createBill($code, $bill_object)
+    public function createBill($code, $bill_object): object
     {
         $data = [
             'form_params' => [
@@ -141,8 +148,10 @@ class ToyyibPay
     /**
      * Get the bill payment link / url
      *
+     * @param string $bill_code
+     * @return string
      */
-    public function billPaymentLink($bill_code)
+    public function billPaymentLink($bill_code): string
     {
         return $this->toyyibpay_uri . '/' . $bill_code;
     }
